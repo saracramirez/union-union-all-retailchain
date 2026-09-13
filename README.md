@@ -50,6 +50,7 @@ Por ejemplo, una empresa podría combinar las ventas registradas en dos canales 
 
 Otro caso sería consolidar los registros de producción de diferentes plantas para analizar el volumen total producido, manteniendo cada registro individual para realizar conteos y auditorías.
 
+
 ### 4. ¿Qué pasa si las columnas de ambas consultas no coinciden en número o tipo?
 
 Para utilizar `UNION` o `UNION ALL`, ambas consultas deben devolver el mismo número de columnas y las columnas correspondientes deben ocupar la misma posición.
@@ -66,3 +67,13 @@ UNION
 
 SELECT id_producto, nombre_producto
 FROM inventario_sucursal_sur;
+
+```
+
+La primera consulta devuelve 3 columnas y la segunda devuelve 2, por lo que SQL genera un error porque las consultas combinadas deben tener el mismo número de columnas.
+
+Además, los tipos de datos de las columnas correspondientes deben ser compatibles. Si se intenta combinar columnas con tipos incompatibles, SQL puede generar un error de conversión o incompatibilidad de tipos, dependiendo del motor de base de datos.
+
+Por ejemplo, si una consulta devuelve `id_producto` como `INT` y la otra devuelve esa misma posición como un texto no convertible a `INT`, el motor puede generar un error al intentar combinar los resultados.
+
+En este ejercicio, las columnas correspondientes de cada `UNION` y `UNION ALL` tienen el mismo número, orden y tipos de datos compatibles, por lo que las consultas pueden ejecutarse correctamente.
